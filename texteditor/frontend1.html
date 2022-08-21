@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text editor</title>
+</head>
+<style>
+    li{
+        margin-top: 20px;
+    }
+.container{
+    display: flex;
+    justify-content: center;
+    
+}
+.container2{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.header{
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+}
+#result{
+    border: none;
+}
+input{
+    border: 2px solid black;
+}
+</style>
+<body>
+    <div class="header">Text-Editor</div>
+    <h1></h1>
+    <div class="container">
+        <ul>
+            <li type="none">Enter your text: <input id="text" type="text"></li>
+            <li type="none">Select your font size: <input id="no" type="text"> </li>
+            <li type="none">Select your font style: <input type="text" id="style"></li>
+            <li type="none">Select your font colour: <input type="text" id="color"> </li>
+            <li type="none"><button onclick="convert()"
+                >submit</button> </li>
+        </ul>
+    </div>
+    <div class="container2">
+
+        Save file as<input  id="filename" type="text"> 
+        <button type="button" onclick="download()">Save</button>
+    </div>
+    <textarea id="result">
+    
+</textarea>
+   
+    <script>
+const text =document.getElementById('text');
+const style =document.getElementById('style');
+const color =document.getElementById('color');
+
+const no =document.getElementById('no');
+
+
+const result=document.getElementById('result')
+function convert(){
+    text1=text.value;
+    no1=no.value +"px";
+style1=style.value;
+color1=color.value;
+    result.innerText=text1;
+    console.log(no1);
+    result.style.fontStyle=style1;
+    result.style.color=color1;
+    result.style.fontSize=no1;
+}
+
+
+
+function download(){
+    const filename=document.getElementById('filename')
+filename1=filename.value;
+    var text = document.getElementById("result").value;
+    text = text.replace(/\n/g, "\r\n"); 
+    var blob = new Blob([text], { type: "text/plain"});
+    var anchor = document.createElement("a");
+    anchor.download = filename1;
+    anchor.href = window.URL.createObjectURL(blob);
+    anchor.target ="_blank";
+    anchor.style.display = "none"; 
+    document.body.appendChild(anchor);
+    anchor.click();
+    document.body.removeChild(anchor);
+ }
+
+    </script>
+</body>
+</html>

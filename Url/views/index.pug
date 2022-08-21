@@ -1,0 +1,45 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title Document
+    style.
+      h1{
+      display: flex;
+      justify-content: center;
+      }
+      .container{
+      margin-top: 35px;
+      display: flex;
+      justify-content: center;
+      }
+      .container1{
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      }
+      li{
+      margin-top: 15px;
+      }
+  body
+    h1 Url shortner
+    .container
+      ul
+        form.myform(action='/shorturl', method='post')
+          li(type='none')
+            | Url 
+            input(type='text', placeholder='Url', name='fullurl')
+          li(type='none')
+            input(type='submit', value='Short')
+    .container1
+      ul
+        li(type='none')
+          | Full Url  #{fullss}
+          span
+            a(href='')
+        li(type='none')
+          | Short Url #{shorturls}
+          span
+            a(href='')
